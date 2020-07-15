@@ -14,6 +14,9 @@ class _LoginState extends State<LoginPage> {
   String id;
   String password;
 
+  List idList = ["younhong", "smile"];
+  List pwList = ["you", "hi"];
+
   Widget build(BuildContext context) {
     var phoneSize = MediaQuery.of(context).size;
     return Scaffold(
@@ -57,26 +60,29 @@ class _LoginState extends State<LoginPage> {
                     color: Colors.grey, fontSize: 16.0),),
             ),
             SizedBox(height: phoneSize.height * 0.05),
-            Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(
-                      phoneSize.width * 0.17)
-              ),
-              child: FlatButton(
+            GestureDetector(
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(
+                        phoneSize.width * 0.17)
+                ),
                 child: Text("로그인",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 25),),
-                onPressed: () async {
-                  _handleSubmitted();
+              ),
+              onTap: () async {
+                _handleSubmitted();
+                if (idList.contains(id) && pwList.contains(password) &&
+                    idList.indexOf(id) == pwList.indexOf(password)) {
                   await Navigator.push(context,
                       MaterialPageRoute(
                           builder: (context) => HomePage()));
                 }
-              ),
-            ),
+              }
+            )
           ],
         ),
       ),
