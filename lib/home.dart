@@ -8,8 +8,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeState extends State<HomePage> {
-  int tabIdx = 0;
+  int tabIdx = 1;
+  var phoneSize;
+
   Widget build(BuildContext context) {
+    phoneSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text("SAT"),
@@ -22,21 +25,35 @@ class _HomeState extends State<HomePage> {
         }),
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.arrow_drop_down),
-            activeIcon: Icon(Icons.arrow_drop_down, color: Colors.red,),
+            icon: Icon(Icons.room),
+            activeIcon: Icon(Icons.room, color: Colors.red,),
             title: Text("커뮤니티")
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.arrow_drop_down),
-              activeIcon: Icon(Icons.arrow_drop_down, color: Colors.red,),
+              icon: Icon(Icons.home),
+              activeIcon: Icon(Icons.home, color: Colors.red,),
               title: Text("문제은행"),
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.arrow_drop_down),
-              activeIcon: Icon(Icons.arrow_drop_down, color: Colors.red,),
+              icon: Icon(Icons.settings),
+              activeIcon: Icon(Icons.settings, color: Colors.red,),
               title: Text("설정")
           ),
         ],
+      ),
+      drawer: SizedBox(
+        width: phoneSize.width * .81,
+        child: Drawer(
+          child: Container(
+            height: double.maxFinite,
+            child: ListView(
+              children: <Widget>[
+                Text("a"),
+                Text("b"),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
