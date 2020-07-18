@@ -9,7 +9,10 @@ class HomePage extends StatefulWidget {
 
 class _HomeState extends State<HomePage> {
   int tabIdx = 1;
+  var phoneSize;
+
   Widget build(BuildContext context) {
+    phoneSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text("SAT"),
@@ -37,6 +40,20 @@ class _HomeState extends State<HomePage> {
               title: Text("설정")
           ),
         ],
+      ),
+      drawer: SizedBox(
+        width: phoneSize.width * .81,
+        child: Drawer(
+          child: Container(
+            height: double.maxFinite,
+            child: ListView(
+              children: <Widget>[
+                Text("a"),
+                Text("b"),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
