@@ -65,8 +65,10 @@ class _HomeState extends State<HomePage> {
         break;
       case 1:
         return BankPage();
+        break;
       case 2:
         return SettingPage();
+        break;
     }
     return Container();
   }
